@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Frontend ProviderIT</title>
+    <link rel="shortcut icon" href="img/providerit.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="img/providerLogo.png" alt="provider-logo">
+        </div>
+        <form id="ficha-cadastral">
+            <h2>Ficha Cadastral</h2>
+            <table>
+                <tr>
+                    <td>
+                        <label for="nameInput">Nome:</label>
+                    </td>
+                    <td colspan="3">
+                        <input maxlength="55" name="nameInput" id="nameInput" type="text" class="textInput" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="rgInput">RG:</label>
+                    </td>
+                    <td>
+                        <input maxlength="13" name="rgInput" id="rgInput" size="13" type="text" class="textInput" required />
+                    <td>
+                        <label class="label" for="cpfInput">C.P.F.:</label>
+                    </td>
+                    <td>
+                        <input maxlength="13" name="cpfInput" id="cpfInput" type="text" size="13" class="textInput" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="enderecoInput">Endereço:</label>
+                    </td>
+                    <td colspan="3" id="endereco">
+                        <input  maxlength="55" size="50" name="enderecoInput" id="enderecoInput" type="text"
+                            class="textInput"/>
+                        <button id="searchBtn" type="button" onclick="typeCep()">
+                            <span class="material-symbols-outlined custom-icons">
+                                search
+                            </span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="generoInput">Sexo:</label>
+                    </td>
+                    <td>
+                        <select name="generoInput" id="generoInput" required>
+                            <option value="" selected disabled style="color: #aaa">--- Selecione ---</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                    </td>
+                    <td class="label nascimento">
+                        <label for="nascimentoInput">Data Nascimento:</label>
+                    </td>
+                    <td>
+                        <input maxlength="13" type="date" id="nascimentoInput" name="nascimentoInput" min="1900-01-01" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="relacionamentoInput">Situação Civil:</label>
+                    </td>
+                    <td class="td-relacionamento">
+                        <input type="radio" id="solteiro" name="relacionamentoInput" value="solteiro" checked>
+                        <label class="radioLabel" for="solteiro">Solteiro(a)</label>
+                    </td>
+                    <td class="td-relacionamento">
+                        <input type="radio" id="casado" name="relacionamentoInput" value="casado">
+                        <label class="radioLabel" for="casado">Casado(a)</label>
+                    </td>
+                    <td class="td-relacionamento">
+                        <input type="radio" id="viuvo" name="relacionamentoInput" value="viuvo">
+                        <label class="radioLabel" for="viuvo">Viúvo(a)</label>
+                    </td>
+                </tr>
+            </table>
+            <div class="buttonRow">
+                <td>
+                    <button type="reset" id="clearBtn">Limpar Dados</button>
+                </td>
+                <td>
+                    <button type="submit" id="submitBtn">Enviar</button>
+                </td>
+            </div>
+        </form>
+    </div>
+    <div id="dynamicDivs"></div>
+    <div id="scroll-indicator">
+        <span class="material-symbols-outlined">
+            arrow_downward
+            </span>
+      </div>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/database.js"></script>
+</body>
+
+</html>

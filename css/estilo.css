@@ -1,0 +1,203 @@
+:root {
+    --main-color: #6D36FB;
+}
+body {
+    background-color: var(--main-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.container {
+    width: 600px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.658);
+    position: relative;
+}
+.container .logo-container {
+    position: absolute;
+    top: -20px;
+    left: 0;
+}
+
+.container .logo-container img {
+    width: 100px;
+}
+
+.container h2 {
+    font-family: sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--main-color);
+}
+
+.container table {
+    width: 500px;
+    border-spacing: 1px;
+    margin: auto;
+    font-size: 14px;
+}
+
+.container table input {
+    height: 24px;
+}
+.container th, .container td {
+    padding: 1px;
+}
+
+.container label {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+.container .label {
+    width: 163px;
+}
+
+.container .label.nascimento label{
+    width: 124px;
+    font-size: 12px;
+}
+
+.container #nascimentoInput, .container #generoInput {
+    width: 146px;
+}
+
+.container .buttonRow {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.container button {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 10px;
+    width: 125px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px outset var(--main-color);
+    border-radius: 5px;
+}
+
+.container #submitBtn {
+    color: #fff;
+    background-color: var(--main-color);
+    border-color: #9369ff;
+    transition: .3s;
+}
+
+.container #submitBtn:hover {
+    background-color: #9369ff;
+    border-color: var(--main-color);
+}
+.container #clearBtn:hover {
+    background-color: #8762e42f;
+}
+.container #rgInput, .container #cpfInput {
+    width: 146px;
+}
+.container #nameInput {
+    width: 100%;
+}
+
+input:focus {
+    border: 2px solid var(--main-color);
+    outline: none;
+}
+.radioLabel {
+    font-weight: normal !important;
+}
+
+#generoInput:focus {
+    border: 2px solid var(--main-color);
+    outline: none;
+}
+#endereco {
+    position: relative;
+}
+
+#enderecoInput {
+    visibility: hidden;
+}
+
+.container #searchBtn {
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 24px;
+    padding: 0;
+    border-radius: 0;
+    background-color: #9369ff;
+    font-weight: bold;
+    color: white;
+    transition: 1s ease;
+}
+.container #searchBtn:hover {
+    background-color: #fff;
+    color: var(--main-color);
+}
+.container #searchBtn:active {
+    transition: .1s;
+    background-color: #ccc;
+    color: var(--main-color);
+}
+.custom-icons {
+    font-size: 20px;
+}
+.td-relacionamento {
+    position: relative;
+}
+.td-relacionamento label{
+    position: absolute;
+    margin:4px;
+}
+
+.container.info tr{
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+}
+.container.info tr:not(:last-child) {
+    border-bottom: 1px dashed #aaa;
+    padding-block: 5px;
+}
+.container.info tr:last-child {
+    padding-top: 5px;
+}
+.container.info .alignedLeft {
+    justify-content: left;
+}
+
+#scroll-indicator {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30%;
+    z-index: 9999;
+  }
+  
+  #scroll-indicator span {
+    font-size: 2rem;
+    color: #fff;
+    animation: scroll .5s ease alternate-reverse infinite;
+  }
+  
+  @keyframes scroll {
+    from {
+        transform: translateY(0);
+        opacity: .3;
+    }
+    to {
+        transform: translateY(20px);
+        opacity: 1;
+      }
+    }
