@@ -25,7 +25,7 @@ document.getElementById('cpfInput')
 function showAddressBar (endereco) {
     if (enderecoInput.value) {
         enderecoInput.style.visibility = 'visible'
-        searchBtn.style= 'width:40px; left: 91.2%;'
+        searchBtn.style= 'width:10%; left: calc(90% - 1px); border-left: transparent;'
     }
 }
 

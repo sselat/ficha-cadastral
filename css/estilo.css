@@ -126,6 +126,7 @@ input:focus {
 
 #enderecoInput {
     visibility: hidden;
+    width: 90%;
 }
 
 .container #searchBtn {
