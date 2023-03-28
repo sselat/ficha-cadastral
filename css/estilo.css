@@ -178,6 +178,19 @@ input:focus {
     justify-content: left;
 }
 
+#showMore button {
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    color: white;
+    transition: 1s ease;
+}
+#showMore button:hover{
+    background-color: #9369ff;
+}
 #scroll-indicator {
     display: none;
     position: fixed;
