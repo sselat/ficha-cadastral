@@ -32,14 +32,17 @@ function showAddressBar (endereco) {
 function typeCep() {
     let cep = prompt("Digite um CEP válido (ex: 1234567 ou 12345-678):")
     if (cep !== null) {
-        cep = cep.trim().replace(/[^0-9]/g, '')
-        if (/^\d{8}$/.test(cep)) { 
-        buscaCep(cep)
+        cep = cep.trim()
+        if (/^[0-9]{5}-?[0-9]{3}$/.test(cep)) { 
+            buscaCep(cep.replace("-", ""))
+        } else if (/[^0-9\-]/.test(cep)) {
+            alert("O CEP digitado contém caracteres inválidos.")
         } else {
-        alert("O CEP digitado não é válido.")
+            alert("O CEP digitado não é válido.")
         }
     }
 }
+
 function buscaCep (cep) {
     const apiUrl = `https://viacep.com.br/ws/${cep}/json/`
  
