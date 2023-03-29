@@ -101,7 +101,7 @@ body {
 .container #clearBtn:hover {
     background-color: #8762e42f;
 }
-.container #rgInput, .container #cpfInput {
+.container #rgInput, .container #cpfInput, .container #cepInput {
     width: 146px;
 }
 .container #nameInput {
@@ -116,27 +116,39 @@ input:focus {
     font-weight: normal !important;
 }
 
+.container td.houseNumber {
+    position: absolute;
+    float: left;
+}
+#houseNumberContainer{
+    position: relative;
+}
+#houseNumber {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 #generoInput:focus {
     border: 2px solid var(--main-color);
     outline: none;
 }
-#endereco {
-    position: relative;
-}
 
 #enderecoInput {
-    visibility: hidden;
-    width: 90%;
+    width: 100%;
+}
+#houseNumber{
+    position: absolute;
 }
 
 .container #searchBtn {
-    left: 0;
-    width: 100%;
+    width: 40px;
     display: inline-block;
     position: absolute;
     height: 24px;
     padding: 0;
     border-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #9369ff;
     font-weight: bold;
     color: white;

@@ -43,16 +43,31 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="enderecoInput">Endereço:</label>
+                        <label for="rgInput">CEP:</label>
                     </td>
-                    <td colspan="3" id="endereco">
-                        <input  maxlength="55" name="enderecoInput" id="enderecoInput" type="text"
-                            class="textInput" readonly/>
-                        <button id="searchBtn" type="button" onclick="typeCep()">
+                    <td>
+                        <input maxlength="8" name="cepInput" id="cepInput" size="13" type="text" class="textInput" required />
+                        <button id="searchBtn" type="button" onclick="validarCep()">
                             <span class="material-symbols-outlined custom-icons">
                                 search
                             </span>
                         </button>
+                    </td>
+                </tr>
+                <tr style="position:relative;">
+                    <td>
+                        <label for="enderecoInput">Endereço:</label>
+                    </td>
+                    <td colspan="2">
+                        <input  maxlength="55" name="enderecoInput" id="enderecoInput" type="text"
+                            class="textInput" readonly/>
+                    </td>
+                    <td class="houseNumber">
+                        <label for="houseNumber">Nº:</label>
+                    </td>
+                    <td colspan="1" id="houseNumberContainer">
+                        <input  name="houseNumber" id="houseNumber" type="text"
+                            class="textInput" readonly/>
                     </td>
                 </tr>
                 <tr>

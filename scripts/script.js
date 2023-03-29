@@ -29,8 +29,8 @@ function showAddressBar(endereco) {
     }
 }
 
-function typeCep() {
-    let cep = prompt("Digite um CEP válido (ex: 1234567 ou 12345-678):")
+function validarCep() {
+    let cep = document.getElementById('cepInput').value
     if (cep !== null) {
         cep = cep.trim()
         if (/^[0-9]{5}-?[0-9]{3}$/.test(cep)) {
