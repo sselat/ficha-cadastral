@@ -37,8 +37,10 @@ function typeCep() {
             buscaCep(cep.replace("-", ""))
         } else if (/[^0-9\-]/.test(cep)) {
             alert("O CEP digitado contém caracteres inválidos.")
+            searchBtn.style = "background-color: tomato;color: #fff;"
         } else {
             alert("O CEP digitado não é válido.")
+            searchBtn.style = "background-color: tomato;color: #fff;"
         }
     }
 }
@@ -51,37 +53,63 @@ function buscaCep(cep) {
         .then(data => {
             if (data.erro) {
                 alert('Não foi possível obter os dados do CEP informado. Verifique novamente')
+                searchBtn.style = "background-color: tomato;color: #fff;"
             } else {
-                enderecoInput.value = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}. CEP: ${data.cep}`
+                enderecoInput.value = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`
                 showAddressBar()
             }
         })
         .catch(error => {
             console.error('Ocorreu um erro na requisição: ', error)
             alert('Não foi possível obter os dados do CEP informado. Verifique novamente')
+            searchBtn.style = "background-color: tomato;color: #fff;"
         })
     showAddressBar()
 }
 
 function validarFormulario() {
-    if (!document.getElementById("enderecoInput").value.length > 0) {
-        document.getElementById("searchBtn").style = "background-color: tomato;color: #fff;"
+    if (!enderecoInput.value.length > 0) {
+        searchBtn.style = "background-color: tomato;color: #fff;"
         alert('Endereço inválido!')
         return false
     } else if (document.getElementById('cpfInput').value.length < 13) {
         alert('CPF Inválido O CPF deve ter pelo menos 13 caracteres!')
         document.getElementById('cpfInput').style.borderColor = 'tomato'
         return false
-    } else if (document.getElementById('nameInput').value.length < 5) {
-        return confirm(`O nome ${document.getElementById('nameInput').value} está correto?`)
     } else {
         return true
     }
 }
 
+function validarNome() {
+    const nameInput = document.getElementById('nameInput')
+    const name = nameInput.value.trim()
+    const firstName = name.split(' ')[0]
+    // verifica se o usuário digitou pelo menos dois nomes
+    if(name.split(' ').length < 2) {
+        alert ('Digite o seu nome completo!')
+        return false
+    }
+    // verifica se o usuário digitou algum caractere especial ou número 
+    if (!/^[a-zA-Z\s-]+$/.test(name)) {
+        alert('Somente letras e hífens (-) serão permitidos.')
+        return false
+    }
+    // verifica se o primeiro nome do usuário tem menos de 5 caracteres, e se ele digitou corretamente
+    if (firstName.length < 5){
+        const confirmarNome = confirm(`O nome ${firstName} tem menos de 5 letras. Você digitou corretamente?`)
+        if(!confirmarNome){
+            nameInput.style.borderColor = 'tomato'
+            return false
+        }
+    }
+
+    return true
+}
+
 document.getElementById('ficha-cadastral').addEventListener('submit', function (event) {
     event.preventDefault()
-    if (validarFormulario()) {
+    if (validarFormulario() && validarNome()) {
         var formValues = {}
         formValues.address = document.getElementById("enderecoInput").value
         formValues.username = document.getElementById("nameInput").value

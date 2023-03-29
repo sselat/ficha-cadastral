@@ -187,6 +187,7 @@ input:focus {
     font-weight: bold;
     color: white;
     transition: 1s ease;
+    cursor: pointer;
 }
 #showMore button:hover{
     background-color: #9369ff;
