@@ -1,7 +1,13 @@
 const enderecoInput = document.getElementById('enderecoInput')
+const houseNumberInput = document.getElementById('houseNumber')
+const stateInput = document.getElementById('stateInput')
+const complementoInput = document.getElementById('complementoInput')
+const bairroInput = document.getElementById('bairroInput')
+const cityInfo = document.getElementById('cityInfo')
 const searchBtn = document.getElementById('searchBtn')
 const cepInput = document.getElementById("cepInput")
-const houseNumberInput = document.getElementById('houseNumber')
+const cpfInput = document.getElementById('cpfInput')
+
 // função para formatar o campo de CEP
 cepInput.addEventListener("input", function () {
 
@@ -22,14 +28,14 @@ houseNumberInput.addEventListener('input', function () {
     this.value = this.value.replace(/\D/g, "")
 })
 
-document.getElementById('cpfInput')
+cpfInput
     .addEventListener('input', function () {
         let cpf = this.value.replace(/\D/g, '')
         cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
         this.value = cpf
     })
 
-document.getElementById('cpfInput')
+cpfInput
     .addEventListener('keydown', function (e) {
         const key = e.key
 
@@ -79,11 +85,6 @@ function buscaCep(cep) {
 }
 
 function preencherEndereco(data) {
-    const stateInput = document.getElementById('stateInput')
-    const complementoInput = document.getElementById('complementoInput')
-    const bairroInput = document.getElementById('bairroInput')
-    const cityInfo = document.getElementById('cityInfo')
-
     enderecoInput.value = data.logradouro
     stateInput.value = data.uf
     bairroInput.value = data.bairro
@@ -101,9 +102,9 @@ function validarFormulario() {
         searchBtn.style = "background-color: tomato;color: #fff;"
         alert('Endereço inválido!')
         return false
-    } else if (document.getElementById('cpfInput').value.length < 13) {
+    } else if (cpfInput.value.length < 13) {
         alert('CPF Inválido O CPF deve ter pelo menos 13 caracteres!')
-        document.getElementById('cpfInput').style.borderColor = 'tomato'
+        cpfInput.style.borderColor = 'tomato'
         return false
     } else {
         return true
@@ -140,7 +141,16 @@ document.getElementById('ficha-cadastral').addEventListener('submit', function (
     event.preventDefault()
     if (validarFormulario() && validarNome()) {
         var formValues = {}
-        formValues.address = document.getElementById("enderecoInput").value
+        formValues.address = 
+        { 
+            "logradouro": enderecoInput.value,
+            "numero": houseNumberInput.value,
+            "complemento": complementoInput.value,
+            "bairro": bairroInput.value,
+            "cidade": cityInfo.value,
+            "uf": stateInput.value,
+            "cep": cepInput.value
+        }
         formValues.username = document.getElementById("nameInput").value
         formValues.rg = document.getElementById("rgInput").value
         formValues.cpf = document.getElementById("cpfInput").value

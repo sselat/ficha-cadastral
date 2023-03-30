@@ -6,7 +6,8 @@ db.transaction(function (tx) {
 
 function addData (data) {
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO fichas_cadastradas (username, rg, cpf, address, gender, birthDate, relationship) VALUES (?, ?, ?, ?, ?, ?, ?)', [data.username, data.rg, data.cpf, data.address, data.gender, data.birthDate, data.relationship], function(tx, result) {
+        const jsonAddress = JSON.stringify(data.address)
+        tx.executeSql('INSERT INTO fichas_cadastradas (username, rg, cpf, address, gender, birthDate, relationship) VALUES (?, ?, ?, ?, ?, ?, ?)', [data.username, data.rg, data.cpf, jsonAddress, data.gender, data.birthDate, data.relationship], function(tx, result) {
            // sucesso
            alert('Dados inseridos com sucesso!')
            showData()
