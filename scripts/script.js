@@ -1,5 +1,21 @@
 const enderecoInput = document.getElementById('enderecoInput')
 const searchBtn = document.getElementById('searchBtn')
+const cepInput = document.getElementById("cepInput")
+
+// função para formatar o campo de CEP
+cepInput.addEventListener("input", function () {
+
+    // remove tudo que não for número
+    if(this.value.length === 6){
+        this.value = this.value.replace(/[^\d-]/g, "")
+    } else{
+        this.value = this.value.replace(/\D/g, "")
+    }
+    // adiciona o hífen após o quinto dígito
+    if (this.value.length > 5) {
+        this.value = this.value.replace(/^(\d{5})(\d{1,3})/, "$1-$2")
+    }
+})
 
 document.getElementById('cpfInput')
     .addEventListener('input', function () {
@@ -21,29 +37,6 @@ document.getElementById('cpfInput')
             }
         }
     })
-
-function showAddressBar(endereco) {
-    if (enderecoInput.value) {
-        enderecoInput.style.visibility = 'visible'
-        searchBtn.style = 'width:10%; left: calc(90% - 1px); border-left: transparent;'
-    }
-}
-
-function validarCep() {
-    let cep = document.getElementById('cepInput').value
-    if (cep !== null) {
-        cep = cep.trim()
-        if (/^[0-9]{5}-?[0-9]{3}$/.test(cep)) {
-            buscaCep(cep.replace("-", ""))
-        } else if (/[^0-9\-]/.test(cep)) {
-            alert("O CEP digitado contém caracteres inválidos.")
-            searchBtn.style = "background-color: tomato;color: #fff;"
-        } else {
-            alert("O CEP digitado não é válido.")
-            searchBtn.style = "background-color: tomato;color: #fff;"
-        }
-    }
-}
 
 function buscaCep(cep) {
     const apiUrl = `https://viacep.com.br/ws/${cep}/json/`
