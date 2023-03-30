@@ -1,7 +1,7 @@
 const enderecoInput = document.getElementById('enderecoInput')
 const searchBtn = document.getElementById('searchBtn')
 const cepInput = document.getElementById("cepInput")
-
+const houseNumberInput = document.getElementById('houseNumber')
 // função para formatar o campo de CEP
 cepInput.addEventListener("input", function () {
 
@@ -15,6 +15,11 @@ cepInput.addEventListener("input", function () {
     if (this.value.length > 5) {
         this.value = this.value.replace(/^(\d{5})(\d{1,3})/, "$1-$2")
     }
+})
+
+// função para permitir apenas números no input do número da casa
+houseNumberInput.addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, "")
 })
 
 document.getElementById('cpfInput')
@@ -37,7 +42,22 @@ document.getElementById('cpfInput')
             }
         }
     })
-
+function validarCep(){
+    let cep = cepInput.value
+    console.log(cep)
+    if (cep !== null) {
+        cep = cep.trim()
+        if (/^[0-9]{5}-?[0-9]{3}$/.test(cep)) {
+            buscaCep(cep.replace("-", ""))
+        } else if (/[^0-9\-]/.test(cep)) {
+            alert("O CEP digitado contém caracteres inválidos.")
+            searchBtn.style = "background-color: tomato;color: #fff;"
+        } else {
+            alert("O CEP digitado não é válido.")
+            searchBtn.style = "background-color: tomato;color: #fff;"
+        }
+    }
+}
 function buscaCep(cep) {
     const apiUrl = `https://viacep.com.br/ws/${cep}/json/`
 
@@ -48,8 +68,7 @@ function buscaCep(cep) {
                 alert('Não foi possível obter os dados do CEP informado. Verifique novamente')
                 searchBtn.style = "background-color: tomato;color: #fff;"
             } else {
-                enderecoInput.value = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`
-                showAddressBar()
+                preencherEndereco(data)
             }
         })
         .catch(error => {
@@ -57,9 +76,26 @@ function buscaCep(cep) {
             alert('Não foi possível obter os dados do CEP informado. Verifique novamente')
             searchBtn.style = "background-color: tomato;color: #fff;"
         })
-    showAddressBar()
 }
 
+function preencherEndereco(data) {
+    const stateInput = document.getElementById('stateInput')
+    const complementoInput = document.getElementById('complementoInput')
+    const bairroInput = document.getElementById('bairroInput')
+    const cityInfo = document.getElementById('cityInfo')
+
+    enderecoInput.value = data.logradouro
+    stateInput.value = data.uf
+    bairroInput.value = data.bairro
+    cityInfo.value = data.localidade
+
+    enderecoInput.removeAttribute('disabled')
+    stateInput.removeAttribute('disabled')
+    complementoInput.removeAttribute('disabled')
+    bairroInput.removeAttribute('disabled')
+    cityInfo.removeAttribute('disabled')
+    houseNumberInput.removeAttribute('disabled')
+}
 function validarFormulario() {
     if (!enderecoInput.value.length > 0) {
         searchBtn.style = "background-color: tomato;color: #fff;"

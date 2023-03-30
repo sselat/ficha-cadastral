@@ -65,6 +65,7 @@ body {
 
 .container #nascimentoInput, .container #generoInput {
     width: 146px;
+    height: 24px;
 }
 
 .container .buttonRow {
@@ -120,14 +121,6 @@ input:focus {
     position: absolute;
     float: left;
 }
-#houseNumberContainer{
-    position: relative;
-}
-#houseNumber {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 #generoInput:focus {
     border: 2px solid var(--main-color);
     outline: none;
@@ -136,10 +129,50 @@ input:focus {
 #enderecoInput {
     width: 100%;
 }
-#houseNumber{
-    position: absolute;
+
+.container .stateInput{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 148px;
+}
+.container .stateInput label {
+    width: 10%;
+}
+.container .stateInput #stateInput{
+    width: 80%;
 }
 
+.container .houseNumber{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 148px;
+}
+.container .houseNumber label {
+    width: 10%;
+}
+.container .houseNumber #houseNumber{
+    width: 80%;
+}
+.container .districtInfo input {
+    width: 70%;
+}
+
+.container .cityInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 238px;
+    position: absolute;
+    right: 0;
+}
+.container .cityInfo label {
+    width: 10%;
+}
+.container .cityInfo #cityInfo{
+    width: 146px;
+}
 .container #searchBtn {
     width: 40px;
     display: inline-block;
