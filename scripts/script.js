@@ -12,9 +12,9 @@ const cpfInput = document.getElementById('cpfInput')
 cepInput.addEventListener("input", function () {
 
     // remove tudo que não for número
-    if(this.value.length === 6){
+    if (this.value.length === 6) {
         this.value = this.value.replace(/[^\d-]/g, "")
-    } else{
+    } else {
         this.value = this.value.replace(/\D/g, "")
     }
     // adiciona o hífen após o quinto dígito
@@ -30,9 +30,16 @@ houseNumberInput.addEventListener('input', function () {
 
 cpfInput
     .addEventListener('input', function () {
+        formatCpfInput(cpfInput)
         let cpf = this.value.replace(/\D/g, '')
-        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-        this.value = cpf
+        if (cpf.length === 11) {
+            for (let i = 0; i < cpf.length; i++) {
+                if (cpf[0] !== cpf[i]) {
+                   return verificarCpf(cpf)
+                }
+            }
+            return invalidarCpf()
+        }
     })
 
 cpfInput
@@ -48,7 +55,16 @@ cpfInput
             }
         }
     })
-function validarCep(){
+
+function formatCpfInput () {
+    const cpf = cpfInput.value.replace(/\D/g, '')
+    if (cpf.length === 11) {
+        cpfInput.value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+    } else {
+        cpfInput.value = cpf
+    }
+}
+function validarCep() {
     let cep = cepInput.value
     console.log(cep)
     if (cep !== null) {
@@ -116,8 +132,8 @@ function validarNome() {
     const name = nameInput.value.trim()
     const firstName = name.split(' ')[0]
     // verifica se o usuário digitou pelo menos dois nomes
-    if(name.split(' ').length < 2) {
-        alert ('Digite o seu nome completo!')
+    if (name.split(' ').length < 2) {
+        alert('Digite o seu nome completo!')
         return false
     }
     // verifica se o usuário digitou algum caractere especial ou número 
@@ -126,9 +142,9 @@ function validarNome() {
         return false
     }
     // verifica se o primeiro nome do usuário tem menos de 5 caracteres, e se ele digitou corretamente
-    if (firstName.length < 5){
+    if (firstName.length < 5) {
         const confirmarNome = confirm(`O nome ${firstName} tem menos de 5 letras. Você digitou corretamente?`)
-        if(!confirmarNome){
+        if (!confirmarNome) {
             nameInput.style.borderColor = 'tomato'
             return false
         }
@@ -141,8 +157,8 @@ document.getElementById('ficha-cadastral').addEventListener('submit', function (
     event.preventDefault()
     if (validarFormulario() && validarNome()) {
         var formValues = {}
-        formValues.address = 
-        { 
+        formValues.address =
+        {
             "logradouro": enderecoInput.value,
             "numero": houseNumberInput.value,
             "complemento": complementoInput.value,
