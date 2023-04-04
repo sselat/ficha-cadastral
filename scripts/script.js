@@ -1,4 +1,5 @@
 const enderecoInput = document.getElementById('enderecoInput')
+const nameInput = document.getElementById("nameInput")
 const houseNumberInput = document.getElementById('houseNumber')
 const stateInput = document.getElementById('stateInput')
 const complementoInput = document.getElementById('complementoInput')
@@ -7,6 +8,7 @@ const cityInfo = document.getElementById('cityInfo')
 const searchBtn = document.getElementById('searchBtn')
 const cepInput = document.getElementById("cepInput")
 const cpfInput = document.getElementById('cpfInput')
+const rgInput = document.getElementById('rgInput')
 
 // função para formatar o campo de CEP
 cepInput.addEventListener("input", function () {
@@ -45,7 +47,6 @@ cpfInput
 cpfInput
     .addEventListener('keydown', function (e) {
         const key = e.key
-
         if (!/\d/.test(key)) {
             if (key === "Backspace" || key === "Delete" || key === "Tab" || key === "Enter" || key.includes("Arrow")) {
                 return true;
@@ -55,6 +56,22 @@ cpfInput
             }
         }
     })
+rgInput
+    .addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, "")
+    })
+rgInput
+    .addEventListener('keydown', function (e) {
+        const key = e.key
+        if (!/\d/.test(key)) {
+            if (key === "Backspace" || key === "Delete" || key === "Tab" || key === "Enter" || key.includes("Arrow")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    })
 
 function formatCpfInput () {
     const cpf = cpfInput.value.replace(/\D/g, '')
@@ -62,6 +79,7 @@ function formatCpfInput () {
         cpfInput.value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
     } else {
         cpfInput.value = cpf
+        cpfInput.style.border = ''
     }
 }
 function validarCep() {
@@ -128,7 +146,6 @@ function validarFormulario() {
 }
 
 function validarNome() {
-    const nameInput = document.getElementById('nameInput')
     const name = nameInput.value.trim()
     const firstName = name.split(' ')[0]
     // verifica se o usuário digitou pelo menos dois nomes
@@ -167,17 +184,16 @@ document.getElementById('ficha-cadastral').addEventListener('submit', function (
             "uf": stateInput.value,
             "cep": cepInput.value
         }
-        formValues.username = document.getElementById("nameInput").value
-        formValues.rg = document.getElementById("rgInput").value
-        formValues.cpf = document.getElementById("cpfInput").value
+        formValues.username = nameInput.value
+        formValues.rg = rgInput.value
+        formValues.cpf = cpfInput.value
         formValues.gender = document.getElementById("generoInput").value
         formValues.birthDate = document.getElementById("nascimentoInput").value
         formValues.relationship = document.querySelector('input[name="relacionamentoInput"]:checked').value
         addData(formValues) //funcao executada pelo database.js
         document.getElementsByTagName('form')[0].reset()
     }
-}
-)
+})
 
 function showArrow() {
     let scrollIndicator = document.getElementById('scroll-indicator')

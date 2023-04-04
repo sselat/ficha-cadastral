@@ -41,6 +41,8 @@ function showData () {
 }
 
 function criarDiv(row) {
+    const endereco = JSON.parse(row.address)
+
     const divHTML = 
     `
         <h2>Cadastro ${row.id}</h2>
@@ -70,8 +72,14 @@ function criarDiv(row) {
                 <td>
                     <label>Endereço:</label>
                 </td>
-                <td colspan="3" id="endereco">
-                    <p>${row.address}</p>
+                <td id="endereco">
+                    <p>${endereco.logradouro}</p>
+                </td>
+                <td>
+                    <label>Nº:</label>
+                </td>
+                <td id="houseNumber">
+                    <p>${endereco.numero}</p>
                 </td>
             </tr>
             <tr>
