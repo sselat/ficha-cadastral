@@ -83,7 +83,6 @@ function formatCpfInput () {
 }
 function validarCep() {
     let cep = cepInput.value
-    console.log(cep)
     if (cep !== null) {
         cep = cep.trim()
         if (/^[0-9]{5}-?[0-9]{3}$/.test(cep)) {
@@ -108,6 +107,10 @@ function buscaCep(cep) {
                 searchBtn.style = "background-color: tomato;color: #fff;"
             } else {
                 preencherEndereco(data)
+                if(data.logradouro == '' || data.bairro == '') {
+                    enderecoInput.removeAttribute('readonly')
+                    bairroInput.removeAttribute('readonly')
+                }
             }
         })
         .catch(error => {
@@ -191,6 +194,8 @@ document.getElementById('ficha-cadastral').addEventListener('submit', function (
         formValues.relationship = document.querySelector('input[name="relacionamentoInput"]:checked').value
         addData(formValues) //funcao executada pelo database.js
         document.getElementsByTagName('form')[0].reset()
+        enderecoInput.setAttribute('readonly')
+        bairroInput.setAttribute('readonly')
     }
 })
 

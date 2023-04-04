@@ -272,7 +272,8 @@ input:focus {
 }
 
 #deleteAll button {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     background-color: transparent;
     border: none;
     border-radius: 5px;
