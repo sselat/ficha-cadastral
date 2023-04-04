@@ -65,6 +65,7 @@ body {
 
 .container #nascimentoInput, .container #generoInput {
     width: 146px;
+    height: 24px;
 }
 
 .container .buttonRow {
@@ -101,7 +102,7 @@ body {
 .container #clearBtn:hover {
     background-color: #8762e42f;
 }
-.container #rgInput, .container #cpfInput {
+.container #rgInput, .container #cpfInput, .container #cepInput {
     width: 146px;
 }
 .container #nameInput {
@@ -116,27 +117,71 @@ input:focus {
     font-weight: normal !important;
 }
 
+.container td.houseNumber {
+    position: absolute;
+    float: left;
+}
 #generoInput:focus {
     border: 2px solid var(--main-color);
     outline: none;
 }
-#endereco {
-    position: relative;
-}
 
 #enderecoInput {
-    visibility: hidden;
-    width: 90%;
+    width: 100%;
 }
 
+.container .stateInput{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 148px;
+}
+.container .stateInput label {
+    width: 10%;
+}
+.container .stateInput #stateInput{
+    width: 80%;
+}
+
+.container .houseNumber{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 148px;
+}
+.container .houseNumber label {
+    width: 10%;
+}
+.container .houseNumber #houseNumber{
+    width: 80%;
+}
+.container .districtInfo input {
+    width: 70%;
+}
+
+.container .cityInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 238px;
+    position: absolute;
+    right: 0;
+}
+.container .cityInfo label {
+    width: 10%;
+}
+.container .cityInfo #cityInfo{
+    width: 146px;
+}
 .container #searchBtn {
-    left: 0;
-    width: 100%;
+    width: 40px;
     display: inline-block;
     position: absolute;
     height: 24px;
     padding: 0;
     border-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #9369ff;
     font-weight: bold;
     color: white;
@@ -162,10 +207,41 @@ input:focus {
     margin:4px;
 }
 
+.container.info {
+    position: relative;
+}
+
+.container.info #deleteButton {
+    color: red;
+    padding: 3px;
+    margin: 0;
+    width: 30px;
+    border: none;
+    transition: .3s;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
+.container.info #deleteButton:hover {
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 5px black;
+}
 .container.info tr{
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
+}
+.container.info td#endereco {
+    width: 100%;
+}
+
+.container.info .smallTd {
+    width: 5%;
+}
+.container.info #houseNumber{
+    width: 15%;
+    text-align: center;
 }
 .container.info tr:not(:last-child) {
     border-bottom: 1px dashed #aaa;
@@ -177,6 +253,8 @@ input:focus {
 .container.info .alignedLeft {
     justify-content: left;
 }
+
+
 
 #showMore button {
     margin-top: 20px;
@@ -191,6 +269,22 @@ input:focus {
 }
 #showMore button:hover{
     background-color: #9369ff;
+}
+
+#deleteAll button {
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    color: white;
+    transition: 1s ease;
+    cursor: pointer;
+}
+#deleteAll button:hover{
+    background-color: #f2f2f2;
+    color: red;
 }
 #scroll-indicator {
     display: none;

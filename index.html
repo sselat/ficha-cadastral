@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio Frontend ProviderIT</title>
     <link rel="shortcut icon" href="img/providerit.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
@@ -25,7 +26,7 @@
                         <label for="nameInput">Nome:</label>
                     </td>
                     <td colspan="3">
-                        <input maxlength="55" name="nameInput" id="nameInput" type="text" class="textInput" required/>
+                        <input maxlength="55" name="nameInput" id="nameInput" type="text" class="textInput" required />
                     </td>
                 </tr>
                 <tr>
@@ -33,26 +34,64 @@
                         <label for="rgInput">RG:</label>
                     </td>
                     <td>
-                        <input maxlength="13" name="rgInput" id="rgInput" size="13" type="text" class="textInput" required />
+                        <input maxlength="13" name="rgInput" id="rgInput" size="13" type="text" class="textInput"
+                            required />
                     <td>
                         <label class="label" for="cpfInput">C.P.F.:</label>
                     </td>
                     <td>
-                        <input maxlength="13" name="cpfInput" id="cpfInput" type="text" size="13" class="textInput" required />
+                        <input maxlength="13" name="cpfInput" id="cpfInput" type="text" size="13" class="textInput";
+                            required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cepInput">CEP:</label>
+                    </td>
+                    <td colspan="2">
+                        <input maxlength="9" name="cepInput" id="cepInput" size="13" type="text" class="textInput"
+                            required />
+                        <button id="searchBtn" type="button" onclick="validarCep()">
+                            <span class="material-symbols-outlined custom-icons">
+                                search
+                            </span>
+                        </button>
+                    </td>
+                    <td class="stateInput">
+                        <label for="stateInput">UF:</label>
+                        <input name="stateInput" id="stateInput" type="text" class="textInput" required disabled/>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label for="enderecoInput">Endereço:</label>
                     </td>
-                    <td colspan="3" id="endereco">
-                        <input  maxlength="55" name="enderecoInput" id="enderecoInput" type="text"
-                            class="textInput" readonly/>
-                        <button id="searchBtn" type="button" onclick="typeCep()">
-                            <span class="material-symbols-outlined custom-icons">
-                                search
-                            </span>
-                        </button>
+                    <td colspan="2">
+                        <input name="enderecoInput" id="enderecoInput" type="text" class="textInput" readonly disabled/>
+                    </td>
+                    <td class="houseNumber">
+                        <label for="houseNumber">Nº:</label>
+                        <input name="houseNumber" id="houseNumber" type="text" class="textInput" required disabled/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="complementoInput">Complemento:</label>
+                    </td>
+                    <td colspan="3">
+                        <input style="width: 100%;" name="complementoInput" id="complementoInput" type="text" class="textInput" disabled/>
+                    </td>
+                </tr>
+                <tr style="position: relative;">
+                    <td>
+                        <label for="bairroInput">Bairro:</label>
+                    </td>
+                    <td class="districtInfo" colspan="2">
+                        <input name="bairroInput" id="bairroInput" type="text" class="textInput" required disabled/>
+                    </td>
+                    <td class="cityInfo">
+                        <label for="cityInfo">Cidade:</label>
+                        <input name="cityInfo" id="cityInfo" type="text" class="textInput" required disabled/>
                     </td>
                 </tr>
                 <tr>
@@ -70,7 +109,8 @@
                         <label for="nascimentoInput">Data Nascimento:</label>
                     </td>
                     <td>
-                        <input maxlength="13" type="date" id="nascimentoInput" name="nascimentoInput" min="1900-01-01" required/>
+                        <input maxlength="13" type="date" id="nascimentoInput" name="nascimentoInput" min="1900-01-01"
+                            required />
                     </td>
                 </tr>
                 <tr>
@@ -105,13 +145,17 @@
     <div id="showMore">
         <button onclick="showData()">Mostrar fichas cadastradas</button>
     </div>
+    <div id="deleteAll">
+        <button onclick="deleteAllItems()">Excluir todas as fichas</button>
+    </div>
     <div id="scroll-indicator">
         <span class="material-symbols-outlined">
             arrow_downward
-            </span>
-      </div>
-    <script src="scripts/script.js"></script>
+        </span>
+    </div>
     <script src="scripts/database.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/verificarcpf.js"></script>
 </body>
 
 </html>
