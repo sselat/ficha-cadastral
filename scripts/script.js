@@ -51,7 +51,6 @@ cpfInput
             if (key === "Backspace" || key === "Delete" || key === "Tab" || key === "Enter" || key.includes("Arrow")) {
                 return true;
             } else {
-                alert("Por favor, insira apenas números.");
                 return false;
             }
         }
@@ -203,6 +202,13 @@ function showArrow() {
     if (pageHeight > windowHeight) {
         scrollIndicator.style.display = 'block'
     }
+    window.addEventListener('scroll', function() {
+        if (window.scrollY === pageHeight - windowHeight) {
+          scrollIndicator.style.display = 'none'
+        } else {
+          scrollIndicator.style.display = 'block'
+        }
+      })
 }
 
 function setDateLimit() {

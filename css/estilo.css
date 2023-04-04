@@ -207,10 +207,41 @@ input:focus {
     margin:4px;
 }
 
+.container.info {
+    position: relative;
+}
+
+.container.info #deleteButton {
+    color: red;
+    padding: 3px;
+    margin: 0;
+    width: 30px;
+    border: none;
+    transition: .3s;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
+.container.info #deleteButton:hover {
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 5px black;
+}
 .container.info tr{
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
+}
+.container.info td#endereco {
+    width: 100%;
+}
+
+.container.info .smallTd {
+    width: 5%;
+}
+.container.info #houseNumber{
+    width: 15%;
+    text-align: center;
 }
 .container.info tr:not(:last-child) {
     border-bottom: 1px dashed #aaa;
@@ -222,6 +253,8 @@ input:focus {
 .container.info .alignedLeft {
     justify-content: left;
 }
+
+
 
 #showMore button {
     margin-top: 20px;
@@ -236,6 +269,22 @@ input:focus {
 }
 #showMore button:hover{
     background-color: #9369ff;
+}
+
+#deleteAll button {
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    color: white;
+    transition: 1s ease;
+    cursor: pointer;
+}
+#deleteAll button:hover{
+    background-color: #f2f2f2;
+    color: red;
 }
 #scroll-indicator {
     display: none;
